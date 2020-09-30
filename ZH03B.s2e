@@ -1,0 +1,72 @@
+{	"extensionName": "Winsen ZH03B 미세먼지 센서",
+	"description": "Winsen에서 개발한 미세먼지 센서 ZH03B에 대한 엠블럭 확장 블럭입니다. ShaggyDog18@gmail.com가 개발한 아두이노 라이브러리(https://github.com/ShaggyDog18/SD_ZH03B)를 기반으로 제작되었으며, 이 확장 블럭 또한 GPL 3.0을 따릅니다.",
+	"version": "0.1",
+	"author": "Gaduino",
+	"homepage": "http://www.github.com/shga89",
+	"sort":0,
+	"javascriptURL":"js/ZH03B.js",
+    "firmware":"1.0",
+    "extensionPort":0,
+	"blockSpecs": [
+		[
+			"w",
+			"Initialize Dust Sensor(ZH03B) connected in Pin RX= %d.pin TX= %d.pin",
+			"ZH03BInit",
+			"",
+			"",
+			{
+				"setup":"
+\/******** ZH03B Setup *********\/
+Serial_ZH03B.listen();
+Serial_ZH03B.begin(9600);
+ZH03B.setMode ( SD_ZH03B::IU_MODE);
+\/******************************\/\n",
+				"inc":"#include \"SD_ZH03B.h\"\n",
+				"def":" 
+\/******** ZH03B Define ********\/
+SoftwareSerial Serial_ZH03B({0}, {1});
+SD_ZH03B ZH03B(Serial_ZH03B);
+
+int getPM(int type){ // type: 0 - PM1.0, 1 - PM2.5, 2 - PM10
+Serial_ZH03B.listen();
+delay(1000); //Dust
+ZH03B.readData();
+if (type==0) return ZH03B.getPM1_0();
+else if (type==1) return ZH03B.getPM2_5();
+else return ZH03B.getPM10_0();
+}  //Dust
+\/******************************\/\n",
+				"work":"",
+				"loop":""
+			}
+		],
+		[
+			"r",
+			"Read %d.dusttype from Dust Sensor(ZH03B)",
+			"ZH03BgetPM",
+			"",
+			{
+				"setup":"",
+				"inc":"",
+				"def":"",
+				"work":"getPM({0})",
+				"loop":""
+			}
+		]
+	],
+	"menus": {
+		"pin":[2,3,4,5,6,7,8,9,10,11,12,13],
+		"dusttype":["PM 1.0", "PM 2.5", "PM 10"]
+	},
+	"values": {
+		"PM 1.0": 0,
+		"PM 2.5": 1,
+		"PM 10": 2,
+	},
+	"translators":{
+		"ko":{
+			"Initialize Dust Sensor(ZH03B) connected in Pin RX= %d.pin TX= %d.pin":"미세먼지 센서(ZH03B) 초기화: RX= %d.pin , TX= %d.pin",
+			"Read %d.dusttype from Dust Sensor(ZH03B)":"미세먼지 센서(ZH03B)에서 %d.dusttype 읽기",
+		}		
+	}
+}
