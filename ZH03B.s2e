@@ -1,7 +1,7 @@
 {	"extensionName": "Winsen ZH03B 미세먼지 센서",
 	"description": "Winsen에서 개발한 미세먼지 센서 ZH03B에 대한 엠블럭 확장 블럭입니다. ShaggyDog18@gmail.com가 개발한 아두이노 라이브러리(https://github.com/ShaggyDog18/SD_ZH03B)를 기반으로 제작되었으며, 이 확장 블럭 또한 GPL 3.0을 따릅니다.",
 	"version": "0.1",
-	"author": "Gaduino",
+	"author": "Gaduino ",
 	"homepage": "http://www.github.com/shga89",
 	"sort":0,
 	"javascriptURL":"js/ZH03B.js",
@@ -10,7 +10,7 @@
 	"blockSpecs": [
 		[
 			"w",
-			"Initialize Dust Sensor(ZH03B) connected in Pin RX= %d.pin TX= %d.pin",
+			"Initialize ZH03B connected in Pin RX= %d.pin TX= %d.pin",
 			"ZH03BInit",
 			"",
 			"",
@@ -42,7 +42,7 @@ else return ZH03B.getPM10_0();
 		],
 		[
 			"r",
-			"Read %d.dusttype from Dust Sensor(ZH03B)",
+			"Read %d.dusttype from ZH03B",
 			"ZH03BgetPM",
 			"",
 			{
@@ -65,8 +65,8 @@ else return ZH03B.getPM10_0();
 	},
 	"translators":{
 		"ko":{
-			"Initialize Dust Sensor(ZH03B) connected in Pin RX= %d.pin TX= %d.pin":"미세먼지 센서(ZH03B) 초기화: RX= %d.pin , TX= %d.pin",
-			"Read %d.dusttype from Dust Sensor(ZH03B)":"미세먼지 센서(ZH03B)에서 %d.dusttype 읽기",
+			"Initialize ZH03B connected in Pin RX= %d.pin TX= %d.pin":"ZH03B 초기화: RX= %d.pin , TX= %d.pin",
+			"Read %d.dusttype from ZH03B":"ZH03B에서 %d.dusttype 읽기",
 		}		
 	}
 }
