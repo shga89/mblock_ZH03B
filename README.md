@@ -1,3 +1,3 @@
 # mblock_ZH03B
 
-PMS3003과 
+PMS3003과 호환 가능
